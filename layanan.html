@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layanan - Kilau Carwash</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <div class="logo">
+            <i class="fas fa-car-side"></i>
+            <span>Kilau Carwash</span>
+          </div>
+          <ul class="nav-menu">
+            <li><a href="home.html">Beranda</a></li>
+            <li><a href="profile.html">Profil</a></li>
+            <li><a href="layanan.html" class="active">Layanan</a></li>
+            <li><a href="home.html#testimoni">Testimoni</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+          </ul>
+          <a href="#" class="btn-primary" id="navOrderBtn">Pesan Sekarang</a>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section
+      class="page-header"
+      style="
+        background: linear-gradient(
+          135deg,
+          rgba(11, 36, 71, 0.95) 0%,
+          rgba(0, 212, 191, 0.85) 100%
+        );
+      "
+    >
+      <div class="container">
+        <div class="page-header-content">
+          <h1>Layanan Kami</h1>
+          <p>Paket Cuci Mobil Lengkap dengan Hasil Maksimal</p>
+          <div class="breadcrumb">
+            <a href="home.html"><i class="fas fa-home"></i> Beranda</a>
+            <span>/</span>
+            <span>Layanan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="layanan" style="padding: 80px 0">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Layanan Kami</span>
+          <h2>Paket Cuci Mobil Lengkap</h2>
+          <p>Pilih paket yang sesuai dengan kebutuhan kendaraan Anda</p>
+          <div class="promo-banner pulse-animation">
+            <i class="fas fa-gift"></i>
+            <span>🎉 PROMO: Cuci 8x Gratis 1x! 🎉</span>
+          </div>
+        </div>
+        <div class="services-grid">
+          <!-- Mobil Kecil -->
+          <div class="service-card colored">
+            <div class="service-icon">
+              <i class="fas fa-car"></i>
+            </div>
+            <h3>Mobil Kecil</h3>
+            <p>
+              Paket lengkap untuk kendaraan ukuran kecil dengan hasil maksimal
+            </p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Cuci body hidrolik</li>
+              <li><i class="fas fa-check"></i> Vakum interior</li>
+              <li><i class="fas fa-check"></i> Semir ban</li>
+              <li><i class="fas fa-check"></i> Lap dashboard</li>
+            </ul>
+            <div class="service-bottom">
+              <div class="service-price">Rp 45.000</div>
+              <button
+                class="btn-outline btn-add-cart"
+                data-id="mobil-kecil"
+                data-service="Mobil Kecil"
+                data-price="45000"
+                data-type="main"
+              >
+                <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+
+          <!-- Mobil Besar -->
+          <div class="service-card featured">
+            <div class="service-icon">
+              <i class="fas fa-car"></i>
+            </div>
+            <div class="popular-badge">POPULAR</div>
+            <h3>Mobil Besar</h3>
+            <p>
+              Paket lengkap untuk kendaraan ukuran besar dengan hasil maksimal
+            </p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Cuci body hidrolik</li>
+              <li><i class="fas fa-check"></i> Vakum interior</li>
+              <li><i class="fas fa-check"></i> Semir ban</li>
+              <li><i class="fas fa-check"></i> Pengharum mobil</li>
+            </ul>
+            <div class="service-bottom">
+              <div class="service-price">Rp 50.000</div>
+              <button
+                class="btn-primary btn-add-cart"
+                data-id="mobil-besar"
+                data-service="Mobil Besar"
+                data-price="50000"
+                data-type="main"
+              >
+                <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+
+          <!-- Bus / Truk -->
+          <div class="service-card colored">
+            <div class="service-icon">
+              <i class="fas fa-truck"></i>
+            </div>
+            <h3>Bus / Truk</h3>
+            <p>Paket khusus untuk kendaraan besar seperti bus dan truk</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Cuci body hidrolik</li>
+              <li><i class="fas fa-check"></i> Vakum interior</li>
+              <li><i class="fas fa-check"></i> Semir ban</li>
+              <li><i class="fas fa-check"></i> Engine cleaning</li>
+            </ul>
+            <div class="service-bottom">
+              <div class="service-price">Rp 115.000</div>
+              <button
+                class="btn-outline btn-add-cart"
+                data-id="bus-truk"
+                data-service="Bus/Truk"
+                data-price="115000"
+                data-type="main"
+              >
+                <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+
+          <!-- Hilangkan Jamur Kaca -->
+          <div class="service-card colored">
+            <div class="service-icon">
+              <i class="fas fa-droplet"></i>
+            </div>
+            <h3>Hilangkan Jamur Kaca</h3>
+            <p>Layanan tambahan untuk membersihkan jamur pada kaca mobil</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Pembersihan kaca depan</li>
+              <li><i class="fas fa-check"></i> Pembersihan kaca samping</li>
+              <li><i class="fas fa-check"></i> Pembersihan kaca belakang</li>
+              <li><i class="fas fa-check"></i> Perlindungan jamur</li>
+            </ul>
+            <div class="service-bottom">
+              <div class="service-price">+ Rp 15.000</div>
+              <button
+                class="btn-outline btn-add-cart"
+                data-id="jamur-kaca"
+                data-service="Hilangkan Jamur Kaca"
+                data-price="15000"
+                data-type="addon"
+              >
+                <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+
+          <!-- Deep Clean Interior -->
+          <div class="service-card colored">
+            <div class="service-icon">
+              <i class="fas fa-sparkles"></i>
+            </div>
+            <h3>Deep Clean Interior</h3>
+            <p>Layanan tambahan untuk pembersihan interior yang menyeluruh</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Pembersihan karpet dalam</li>
+              <li><i class="fas fa-check"></i> Pembersihan AC</li>
+              <li><i class="fas fa-check"></i> Pembersihan detail interior</li>
+              <li><i class="fas fa-check"></i> Sanitasi interior</li>
+            </ul>
+            <div class="service-bottom">
+              <div class="service-price">+ Rp 25.000</div>
+              <button
+                class="btn-outline btn-add-cart"
+                data-id="deep-clean"
+                data-service="Deep Clean Interior"
+                data-price="25000"
+                data-type="addon"
+              >
+                <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+
+          <!-- Waxing & Poles -->
+          <div class="service-card colored">
+            <div class="service-icon">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <h3>Waxing & Poles</h3>
+            <p>Perlindungan ekstra untuk cat mobil Anda agar lebih mengkilap</p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Waxing premium</li>
+              <li><i class="fas fa-check"></i> Poles body</li>
+              <li><i class="fas fa-check"></i> Coating proteksi</li>
+              <li><i class="fas fa-check"></i> Anti jamur & air</li>
+            </ul>
+            <div class="service-bottom">
+              <div class="service-price">+ Rp 75.000</div>
+              <button
+                class="btn-outline btn-add-cart"
+                data-id="waxing-poles"
+                data-service="Waxing & Poles"
+                data-price="75000"
+                data-type="addon"
+              >
+                <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Info Section -->
+        <div class="service-info" style="margin-top: 60px; text-align: center">
+          <div class="section-header">
+            <h3>Informasi Penting</h3>
+            <div style="max-width: 800px; margin: 30px auto; text-align: left">
+              <div
+                class="info-box"
+                style="
+                  background: #f8f9fa;
+                  padding: 25px;
+                  border-radius: 12px;
+                  margin-bottom: 20px;
+                "
+              >
+                <h4 style="color: var(--primary-color); margin-bottom: 15px">
+                  <i class="fas fa-clock"></i> Estimasi Waktu
+                </h4>
+                <ul style="list-style: none; padding-left: 0">
+                  <li style="margin-bottom: 10px">
+                    <i
+                      class="fas fa-check-circle"
+                      style="color: var(--secondary-color)"
+                    ></i>
+                    Mobil Kecil/Besar: 30-45 menit
+                  </li>
+                  <li style="margin-bottom: 10px">
+                    <i
+                      class="fas fa-check-circle"
+                      style="color: var(--secondary-color)"
+                    ></i>
+                    Bus/Truk: 60-90 menit
+                  </li>
+                  <li style="margin-bottom: 10px">
+                    <i
+                      class="fas fa-check-circle"
+                      style="color: var(--secondary-color)"
+                    ></i>
+                    Layanan Tambahan: +15-30 menit
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="info-box"
+                style="background: #f8f9fa; padding: 25px; border-radius: 12px"
+              >
+                <h4 style="color: var(--primary-color); margin-bottom: 15px">
+                  <i class="fas fa-gift"></i> Program Loyalitas
+                </h4>
+                <p style="margin-bottom: 10px">
+                  Nikmati promo spesial untuk pelanggan setia!
+                </p>
+                <ul style="list-style: none; padding-left: 0">
+                  <li style="margin-bottom: 10px">
+                    <i
+                      class="fas fa-star"
+                      style="color: var(--accent-color)"
+                    ></i>
+                    Cuci 8x, Gratis 1x cucian
+                  </li>
+                  <li style="margin-bottom: 10px">
+                    <i
+                      class="fas fa-star"
+                      style="color: var(--accent-color)"
+                    ></i>
+                    Diskon member hingga 10%
+                  </li>
+                  <li>
+                    <i
+                      class="fas fa-star"
+                      style="color: var(--accent-color)"
+                    ></i>
+                    Promo khusus di hari-hari tertentu
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div style="text-align: center; margin-top: 50px">
+          <h3 style="margin-bottom: 20px">Siap Untuk Mobil Mengkilap?</h3>
+          <p style="margin-bottom: 30px; color: var(--gray-text)">
+            Hubungi kami sekarang untuk booking atau informasi lebih lanjut
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: 15px;
+              justify-content: center;
+              flex-wrap: wrap;
+            "
+          >
+            <a href="kontak.html" class="btn-primary btn-lg">
+              <i class="fas fa-calendar-check"></i> Booking Sekarang
+            </a>
+            <a
+              href="https://wa.me/6282372597596"
+              target="_blank"
+              class="btn-outline btn-lg"
+            >
+              <i class="fab fa-whatsapp"></i> Chat WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <i class="fas fa-car-side"></i>
+              <span>Kilau Carwash</span>
+            </div>
+            <p>
+              Jasa cuci mobil profesional dengan teknologi modern dan layanan
+              terbaik di Bandar Lampung.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/profile.php?id=100077694530386"
+                target="_blank"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="https://www.instagram.com/kilaucarwash/" target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://wa.me/6282372597596" target="_blank"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h4>Navigasi</h4>
+            <ul>
+              <li><a href="home.html">Beranda</a></li>
+              <li><a href="profile.html">Profil</a></li>
+              <li><a href="layanan.html">Layanan</a></li>
+              <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Layanan</h4>
+            <ul>
+              <li><a href="layanan.html">Mobil Kecil</a></li>
+              <li><a href="layanan.html">Mobil Besar</a></li>
+              <li><a href="layanan.html">Bus / Truk</a></li>
+              <li><a href="layanan.html">Deep Clean</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Kontak Kami</h4>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span
+                  >Jl. Ir. Sutami, Kemiling, Kec. Kemiling, Kota Bandar
+                  Lampung</span
+                >
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>+62 823-7259-7596</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Setiap Hari: 07:00 - 18:00 WIB</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Kilau Carwash. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Cart Button -->
+    <button class="floating-cart-btn" id="floatingCartBtn">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h3><i class="fas fa-shopping-cart"></i> Keranjang Belanja</h3>
+        <button class="cart-close" id="cartClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="cart-body" id="cartBody">
+        <div class="cart-empty" id="cartEmpty">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Keranjang belanja kosong</p>
+          <small>Tambahkan layanan yang Anda butuhkan</small>
+        </div>
+        <div class="cart-items" id="cartItems">
+          <!-- Cart items will be added here dynamically -->
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span class="total-amount" id="cartTotal">Rp 0</span>
+        </div>
+        <button class="btn-checkout" id="checkoutBtn">
+          <i class="fas fa-cash-register"></i> Checkout
+        </button>
+        <button class="btn-clear-cart" id="clearCartBtn">
+          <i class="fas fa-trash"></i> Kosongkan KeranjangI
+        </button>
+      </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal">
+      <div class="modal-content checkout-modal">
+        <span class="close" id="checkoutClose">&times;</span>
+        <h2><i class="fas fa-cash-register"></i> Checkout Pemesanan</h2>
+
+        <div class="checkout-container">
+          <!-- Order Summary -->
+          <div class="checkout-section">
+            <h3><i class="fas fa-clipboard-list"></i> Ringkasan Pesanan</h3>
+            <div class="checkout-items" id="checkoutItems">
+              <!-- Items will be populated here -->
+            </div>
+            <div class="checkout-total">
+              <div class="total-row">
+                <span>Subtotal:</span>
+                <span id="checkoutSubtotal">Rp 0</span>
+              </div>
+              <div class="total-row grand-total">
+                <span>Total Pembayaran:</span>
+                <span id="checkoutTotal">Rp 0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer Information -->
+          <div class="checkout-section">
+            <h3><i class="fas fa-user"></i> Informasi Pelanggan</h3>
+            <form id="checkoutForm">
+              <div class="form-group">
+                <label><i class="fas fa-user"></i> Nama Lengkap *</label>
+                <input
+                  type="text"
+                  id="checkoutName"
+                  placeholder="Masukkan nama Anda"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-phone"></i> Nomor WhatsApp *</label>
+                <input
+                  type="tel"
+                  id="checkoutPhone"
+                  placeholder="08123456789"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-calendar"></i> Tanggal & Waktu *</label>
+                <input type="datetime-local" id="checkoutDateTime" required />
+              </div>
+              <div class="form-group">
+                <label
+                  ><i class="fas fa-car"></i> Nomor Polisi (Opsional)</label
+                >
+                <input
+                  type="text"
+                  id="checkoutPlate"
+                  placeholder="B 1234 XYZ"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  ><i class="fas fa-map-marker-alt"></i> Alamat
+                  (Opsional)</label
+                >
+                <textarea
+                  id="checkoutAddress"
+                  rows="2"
+                  placeholder="Alamat lengkap Anda"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label
+                  ><i class="fas fa-comment"></i> Catatan Tambahan
+                  (Opsional)</label
+                >
+                <textarea
+                  id="checkoutNotes"
+                  rows="3"
+                  placeholder="Tambahkan catatan khusus..."
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label
+                  ><i class="fas fa-credit-card"></i> Metode Pembayaran *</label
+                >
+                <select id="checkoutPaymentMethod" required>
+                  <option value="Tunai">Tunai (Cash)</option>
+                  <option value="Transfer Bank">Transfer Bank</option>
+                  <option value="QRIS / E-Wallet">QRIS / E-Wallet</option>
+                </select>
+              </div>
+
+              <div class="checkout-actions">
+                <button
+                  type="button"
+                  id="payNowBtn"
+                  class="btn-outline btn-lg btn-submit"
+                >
+                  <i class="fas fa-money-bill-wave"></i> Bayar Sekarang
+                </button>
+                <button type="submit" class="btn-primary btn-lg btn-submit">
+                  <i class="fab fa-whatsapp"></i> Konfirmasi Pesanan via
+                  WhatsApp
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bill/Invoice Modal -->
+    <div id="billModal" class="modal">
+      <div class="modal-content bill-modal">
+        <span class="close" id="billClose">&times;</span>
+
+        <div id="billContent" class="bill-content">
+          <!-- Bill content will be generated here -->
+        </div>
+
+        <div class="bill-actions">
+          <button id="billPrint" class="btn-primary">
+            <i class="fas fa-print"></i> Cetak Struk
+          </button>
+          <button id="billDownload" class="btn-outline">
+            <i class="fas fa-download"></i> Download PDF
+          </button>
+          <button id="billConfirm" class="btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i> Konfirmasi Pesanan
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

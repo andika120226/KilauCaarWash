@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontak Kami - Kilau Carwash Bandar Lampung</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <div class="logo">
+            <i class="fas fa-car-side"></i>
+            <span>Kilau Carwash</span>
+          </div>
+          <ul class="nav-menu">
+            <li><a href="home.html">Beranda</a></li>
+            <li><a href="profile.html">Profil</a></li>
+            <li><a href="layanan.html">Layanan</a></li>
+            <li><a href="home.html#testimoni">Testimoni</a></li>
+            <li><a href="kontak.html" class="active">Kontak</a></li>
+          </ul>
+          <a href="kontak.html" class="btn-primary">Pesan Sekarang</a>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+      <div class="container">
+        <div class="contact-hero-content">
+          <span class="badge">Hubungi Kami</span>
+          <h1>Mari Berkomunikasi</h1>
+          <p class="lead">
+            Kami siap membantu Anda dengan segala kebutuhan perawatan kendaraan
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="feedback-section" id="feedback">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Ulasan</span>
+          <h2>Komentar & Rating Pelanggan</h2>
+          <p>Bagikan pengalaman Anda di Kilau Carwash.</p>
+        </div>
+
+        <!-- Feedback Actions: reload & clear -->
+        <div
+          class="feedback-actions"
+          style="
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin: 10px 0 20px;
+          "
+        >
+          <button id="feedbackReload" class="btn-outline" type="button">
+            <i class="fas fa-rotate"></i> Muat Ulang
+          </button>
+          <button
+            id="feedbackClear"
+            class="btn-outline"
+            type="button"
+            style="border-color: #ef4444; color: #ef4444"
+          >
+            <i class="fas fa-trash"></i> Hapus Semua
+          </button>
+        </div>
+
+        <div class="feedback-grid">
+          <div class="feedback-stats">
+            <div class="avg-score">
+              <div class="avg-number" id="avgRating">0.0</div>
+              <div
+                class="avg-stars"
+                id="avgStars"
+                aria-label="Rata-rata rating"
+              ></div>
+              <div class="review-count">
+                <span id="totalReviews">0</span> ulasan
+              </div>
+            </div>
+          </div>
+
+          <div class="feedback-form-container">
+            <form
+              id="feedbackForm"
+              class="feedback-form"
+              aria-label="Form komentar dan rating"
+            >
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fbName"><i class="fas fa-user"></i> Nama *</label>
+                  <input
+                    type="text"
+                    id="fbName"
+                    name="name"
+                    placeholder="Nama Anda"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label><i class="fas fa-star"></i> Rating *</label>
+                  <div
+                    class="rating-input"
+                    role="radiogroup"
+                    aria-label="Pilih rating"
+                  >
+                    <input type="radio" id="star5" name="rating" value="5" />
+                    <label for="star5" title="5 bintang">★</label>
+                    <input type="radio" id="star4" name="rating" value="4" />
+                    <label for="star4" title="4 bintang">★</label>
+                    <input type="radio" id="star3" name="rating" value="3" />
+                    <label for="star3" title="3 bintang">★</label>
+                    <input type="radio" id="star2" name="rating" value="2" />
+                    <label for="star2" title="2 bintang">★</label>
+                    <input type="radio" id="star1" name="rating" value="1" />
+                    <label for="star1" title="1 bintang">★</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fbComment"
+                    ><i class="fas fa-comment"></i> Komentar *</label
+                  >
+                  <textarea
+                    id="fbComment"
+                    name="comment"
+                    rows="4"
+                    placeholder="Tulis pengalaman Anda..."
+                    required
+                  ></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-primary btn-lg">
+                <i class="fas fa-paper-plane"></i> Kirim Ulasan
+              </button>
+              <div id="feedbackMessage" class="form-message hidden"></div>
+            </form>
+          </div>
+        </div>
+
+        <div id="feedbackList" class="feedback-list" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Contact Info -->
+          <div class="contact-info-side">
+            <h2>Informasi Kontak</h2>
+            <p>
+              Jangan ragu untuk menghubungi kami. Tim kami siap melayani Anda!
+            </p>
+
+            <div class="contact-cards">
+              <div class="contact-info-card">
+                <div class="contact-card-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-card-content">
+                  <h4>Alamat</h4>
+                  <p>
+                    Jl. Cikditiro No.38<br />Sumberjo, Kemiling<br />Bandar
+                    Lampung, Lampung
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-info-card">
+                <div class="contact-card-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-card-content">
+                  <h4>Telepon</h4>
+                  <p>+62 812-3456-7890<br />+62 821-9876-5432</p>
+                  <a href="tel:+6282175424507" class="contact-link"
+                    >Hubungi via Telepon</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-info-card">
+                <div class="contact-card-icon">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="contact-card-content">
+                  <h4>WhatsApp</h4>
+                  <p>Chat dengan kami untuk<br />booking cepat & mudah</p>
+                  <a
+                    href="https://wa.me/622175424507?text=Halo%20Kilau%20Carwash,%20saya%20ingin%20bertanya"
+                    class="contact-link"
+                    target="_blank"
+                    >Chat WhatsApp</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-info-card">
+                <div class="contact-card-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-card-content">
+                  <h4>Email</h4>
+                  <p>kilaucarwash@gmail.com<br />info@kilaucarwash.com</p>
+                  <a href="mailto:kilaucarwash@gmail.com" class="contact-link"
+                    >Kirim Email</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-info-card">
+                <div class="contact-card-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="contact-card-content">
+                  <h4>Jam Operasional</h4>
+                  <p>Senin - Minggu<br />07.00 - 18.00 WIB</p>
+                </div>
+              </div>
+
+              <div class="contact-info-card">
+                <div class="contact-card-icon">
+                  <i class="fab fa-instagram"></i>
+                </div>
+                <div class="contact-card-content">
+                  <h4>Instagram</h4>
+                  <p>@kilau.carwash_lampung</p>
+                  <a
+                    href="https://www.instagram.com/kilau.carwash_lampung"
+                    class="contact-link"
+                    target="_blank"
+                    >Follow Instagram</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-side">
+            <div class="contact-form-container">
+              <h2>Kirim Pesan</h2>
+              <p>
+                Isi formulir di bawah ini dan kami akan segera menghubungi Anda
+              </p>
+
+              <form id="contactForm" class="contact-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="name"
+                      ><i class="fas fa-user"></i> Nama Lengkap *</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Masukkan nama Anda"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="email"
+                      ><i class="fas fa-envelope"></i> Email *</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="email@example.com"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="phone"
+                      ><i class="fas fa-phone"></i> Nomor Telepon *</label
+                    >
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="+62 812-xxxx-xxxx"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="service"
+                      ><i class="fas fa-car"></i> Jenis Layanan</label
+                    >
+                    <select id="service" name="service">
+                      <option value="">Pilih Layanan</option>
+                      <option value="mobil-kecil">
+                        Cuci Mobil Kecil - Rp 45.000
+                      </option>
+                      <option value="mobil-besar">
+                        Cuci Mobil Besar - Rp 50.000
+                      </option>
+                      <option value="bus-truk">Bus / Truk - Rp 115.000</option>
+                      <option value="jamur-kaca">
+                        Hilangkan Jamur Kaca - Rp 15.000
+                      </option>
+                      <option value="deep-clean">
+                        Deep Clean Interior - Rp 25.000
+                      </option>
+                      <option value="waxing">Waxing & Poles - Rp 75.000</option>
+                      <option value="lainnya">Lainnya</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="date"
+                      ><i class="fas fa-calendar"></i> Tanggal Booking</label
+                    >
+                    <input type="date" id="date" name="date" />
+                  </div>
+                  <div class="form-group">
+                    <label for="time"><i class="fas fa-clock"></i> Waktu</label>
+                    <select id="time" name="time">
+                      <option value="">Pilih Waktu</option>
+                      <option value="07:00">07:00 WIB</option>
+                      <option value="08:00">08:00 WIB</option>
+                      <option value="09:00">09:00 WIB</option>
+                      <option value="10:00">10:00 WIB</option>
+                      <option value="11:00">11:00 WIB</option>
+                      <option value="12:00">12:00 WIB</option>
+                      <option value="13:00">13:00 WIB</option>
+                      <option value="14:00">14:00 WIB</option>
+                      <option value="15:00">15:00 WIB</option>
+                      <option value="16:00">16:00 WIB</option>
+                      <option value="17:00">17:00 WIB</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="message"
+                      ><i class="fas fa-comment"></i> Pesan</label
+                    >
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="5"
+                      placeholder="Tulis pesan atau pertanyaan Anda di sini..."
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-primary btn-lg btn-block">
+                  <i class="fas fa-paper-plane"></i> Kirim Pesan
+                </button>
+
+                <div class="form-divider">
+                  <span>atau</span>
+                </div>
+
+                <a
+                  href="https://wa.me/6281234567890?text=Halo%20Kilau%20Carwash,%20saya%20ingin%20booking%20layanan"
+                  class="btn-whatsapp btn-lg btn-block"
+                  target="_blank"
+                >
+                  <i class="fab fa-whatsapp"></i> Booking via WhatsApp
+                </a>
+              </form>
+
+              <div id="form-message" class="form-message hidden"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <div class="container-fluid">
+        <div class="map-header">
+          <h2>Lokasi Kami</h2>
+          <p>Jl. Cikditiro No.38, Sumberjo, Kemiling, Bandar Lampung</p>
+          <a
+            href="https://maps.app.goo.gl/3DyWUTpeuri861HT8"
+            class="btn-primary"
+            target="_blank"
+          >
+            <i class="fas fa-directions"></i> Buka di Google Maps
+          </a>
+        </div>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.604766834849!2d105.21147089999999!3d-5.3953244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40d15393247bff%3A0x359164295bc87e4b!2sKilau%20carwash!5e0!3m2!1sid!2sid!4v1702943000000!5m2!1sid!2sid"
+            width="100%"
+            height="500"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">FAQ</span>
+          <h2>Pertanyaan yang Sering Diajukan</h2>
+          <p>Temukan jawaban untuk pertanyaan umum tentang layanan kami</p>
+        </div>
+        <div class="faq-container">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Berapa lama proses cuci mobil?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Untuk cuci standar membutuhkan waktu sekitar 30-45 menit. Untuk
+                layanan deep clean atau detailing bisa memakan waktu 1-2 jam
+                tergantung kondisi kendaraan.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Apakah bisa booking terlebih dahulu?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Ya, Anda bisa booking melalui WhatsApp atau mengisi formulir
+                kontak di website kami. Booking memastikan Anda tidak perlu
+                menunggu antrian.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Apa saja metode pembayaran yang diterima?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Kami menerima pembayaran tunai, transfer bank (BCA, Mandiri,
+                BRI), dan e-wallet (GoPay, OVO, Dana, ShopeePay).
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Apakah ada garansi untuk layanan cuci?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Ya, kami memberikan garansi kepuasan 100%. Jika Anda tidak puas
+                dengan hasil cuci, kami akan cuci ulang gratis dalam 24 jam.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Apakah produk yang digunakan aman untuk cat mobil?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Tentu saja! Kami hanya menggunakan produk premium yang aman
+                untuk segala jenis cat mobil dan ramah lingkungan.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Apakah ada promo atau paket member?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Ya! Saat ini kami memiliki promo "Cuci 8x Gratis 1x". Kami juga
+                memiliki paket member bulanan dengan harga spesial. Hubungi kami
+                untuk info lebih lanjut.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Apakah tersedia layanan antar-jemput kendaraan?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Untuk area tertentu di Bandar Lampung, kami menyediakan layanan
+                antar-jemput dengan biaya tambahan. Hubungi kami untuk informasi
+                lebih detail.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Bagaimana jika cuci saat hujan?</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Lokasi kami memiliki area tertutup sehingga proses cuci tetap
+                bisa dilakukan meskipun hujan. Namun, kami sarankan untuk
+                booking ulang jika hujan sangat deras.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Siap Membersihkan Mobil Anda?</h2>
+          <p>
+            Hubungi kami sekarang untuk booking atau kunjungi langsung lokasi
+            kami!
+          </p>
+          <div class="cta-buttons">
+            <a
+              href="https://wa.me/6281234567890?text=Halo%20Kilau%20Carwash,%20saya%20ingin%20booking"
+              class="btn-primary btn-lg"
+              target="_blank"
+            >
+              <i class="fab fa-whatsapp"></i> Chat WhatsApp
+            </a>
+            <a href="tel:+6281234567890" class="btn-outline btn-lg">
+              <i class="fas fa-phone"></i> Telepon Sekarang
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <div class="footer-logo">
+              <i class="fas fa-car-side"></i>
+              <span>Kilau Carwash</span>
+            </div>
+            <p>
+              Jasa cuci mobil profesional di Bandar Lampung dengan layanan
+              terbaik dan harga terjangkau.
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/kilau.carwash_lampung"
+                target="_blank"
+                aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Menu</h4>
+            <ul>
+              <li><a href="home.html">Beranda</a></li>
+              <li><a href="profile.html">Profil</a></li>
+              <li><a href="home.html#layanan">Layanan</a></li>
+              <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Layanan</h4>
+            <ul>
+              <li><a href="home.html#layanan">Cuci Mobil Kecil</a></li>
+              <li><a href="home.html#layanan">Cuci Mobil Besar</a></li>
+              <li><a href="home.html#layanan">Bus & Truk</a></li>
+              <li><a href="home.html#layanan">Deep Clean Interior</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Kontak Kami</h4>
+            <ul class="contact-list">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> Jl. Cikditiro No.38,
+                Kemiling
+              </li>
+              <li><i class="fas fa-phone"></i> +62 812-3456-7890</li>
+              <li><i class="fas fa-envelope"></i> kilaucarwash@gmail.com</li>
+              <li>
+                <i class="fas fa-clock"></i> Senin - Minggu: 07.00 - 18.00
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Kilau Carwash. All rights reserved. | Bandar Lampung,
+            Indonesia
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/6281234567890?text=Halo%20Kilau%20Carwash,%20saya%20ingin%20booking%20layanan"
+      class="floating-whatsapp"
+      target="_blank"
+      aria-label="Chat WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+  </body>
+</html>
