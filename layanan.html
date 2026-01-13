@@ -41,7 +41,46 @@
         </div>
       </div>
     </nav>
-
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay"></div>
+    <div class="mobile-nav">
+      <div class="mobile-nav-header">
+        <div class="mobile-nav-logo">
+          <i class="fas fa-car-side"></i>
+          <span>Kilau Carwash</span>
+        </div>
+        <button class="mobile-nav-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav-menu">
+        <a href="home.html" class="mobile-nav-link">
+          <i class="fas fa-home"></i>
+          <span>Beranda</span>
+        </a>
+        <a href="layanan.html" class="mobile-nav-link active">
+          <i class="fas fa-list"></i>
+          <span>Layanan</span>
+        </a>
+        <a href="kontak.html" class="mobile-nav-link">
+          <i class="fas fa-envelope"></i>
+          <span>Kontak</span>
+        </a>
+        <a href="home.html#testimoni" class="mobile-nav-link">
+          <i class="fas fa-star"></i>
+          <span>Testimoni</span>
+        </a>
+      </nav>
+      <div class="mobile-nav-footer">
+        <a href="kontak.html" class="btn-primary btn-block">
+          <i class="fas fa-phone"></i> Pesan Sekarang
+        </a>
+        <div class="mobile-nav-info">
+          <p><i class="fas fa-map-marker-alt"></i> Bandar Lampung</p>
+          <p><i class="fas fa-clock"></i> Senin - Minggu, 08:00 - 18:00</p>
+        </div>
+      </div>
+    </div>
     <!-- Page Header -->
     <section
       class="page-header"
@@ -345,7 +384,7 @@
               <i class="fas fa-calendar-check"></i> Booking Sekarang
             </a>
             <a
-              href="https://wa.me/6282372597596"
+              href="https://wa.me/6282175424507"
               target="_blank"
               class="btn-outline btn-lg"
             >
@@ -378,7 +417,7 @@
               <a href="https://www.instagram.com/kilaucarwash/" target="_blank"
                 ><i class="fab fa-instagram"></i
               ></a>
-              <a href="https://wa.me/6282372597596" target="_blank"
+              <a href="https://wa.me/6282175424507" target="_blank"
                 ><i class="fab fa-whatsapp"></i
               ></a>
             </div>
@@ -556,15 +595,228 @@
                 ></textarea>
               </div>
 
-              <div class="form-group">
+              <div class="form-group payment-method-group">
                 <label
                   ><i class="fas fa-credit-card"></i> Metode Pembayaran *</label
                 >
-                <select id="checkoutPaymentMethod" required>
-                  <option value="Tunai">Tunai (Cash)</option>
-                  <option value="Transfer Bank">Transfer Bank</option>
-                  <option value="QRIS / E-Wallet">QRIS / E-Wallet</option>
-                </select>
+                <div class="payment-methods-grid">
+                  <!-- E-Wallet Section -->
+                  <div class="payment-category">
+                    <h4 class="payment-category-title">
+                      <i class="fas fa-mobile-alt"></i> E-Wallet
+                    </h4>
+                    <div class="payment-options">
+                      <!-- DANA -->
+                      <div class="payment-option">
+                        <input
+                          type="radio"
+                          id="payment-dana"
+                          name="paymentMethod"
+                          value="DANA"
+                          required
+                        />
+                        <label for="payment-dana">
+                          <div class="payment-logo">
+                            <img
+                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/512px-Logo_dana_blue.svg.png"
+                              alt="DANA"
+                            />
+                          </div>
+                          <span class="payment-name">DANA</span>
+                        </label>
+                      </div>
+
+                      <!-- GoPay -->
+                      <div class="payment-option">
+                        <input
+                          type="radio"
+                          id="payment-gopay"
+                          name="paymentMethod"
+                          value="GoPay"
+                        />
+                        <label for="payment-gopay">
+                          <div class="payment-logo">
+                            <img
+                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Gopay_logo.svg/512px-Gopay_logo.svg.png"
+                              alt="GoPay"
+                            />
+                          </div>
+                          <span class="payment-name">GoPay</span>
+                        </label>
+                      </div>
+
+                      <!-- OVO -->
+                      <div class="payment-option">
+                        <input
+                          type="radio"
+                          id="payment-ovo"
+                          name="paymentMethod"
+                          value="OVO"
+                        />
+                        <label for="payment-ovo">
+                          <div class="payment-logo">
+                            <img
+                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Logo_ovo_purple.svg/512px-Logo_ovo_purple.svg.png"
+                              alt="OVO"
+                            />
+                          </div>
+                          <span class="payment-name">OVO</span>
+                        </label>
+                      </div>
+
+                      <!-- ShopeePay -->
+                      <div class="payment-option">
+                        <input
+                          type="radio"
+                          id="payment-shopeepay"
+                          name="paymentMethod"
+                          value="ShopeePay"
+                        />
+                        <label for="payment-shopeepay">
+                          <div class="payment-logo">
+                            <img
+                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Shopee.svg/512px-Shopee.svg.png"
+                              alt="ShopeePay"
+                            />
+                          </div>
+                          <span class="payment-name">ShopeePay</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- QRIS Section -->
+                  <div class="payment-category">
+                    <h4 class="payment-category-title">
+                      <i class="fas fa-qrcode"></i> QRIS
+                    </h4>
+                    <div class="payment-options">
+                      <div class="payment-option payment-option-wide">
+                        <input
+                          type="radio"
+                          id="payment-qris"
+                          name="paymentMethod"
+                          value="QRIS"
+                        />
+                        <label for="payment-qris">
+                          <div class="payment-logo">
+                            <img
+                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/QRIS_logo.svg/512px-QRIS_logo.svg.png"
+                              alt="QRIS"
+                            />
+                          </div>
+                          <span class="payment-name">Scan QRIS</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Virtual Account / Bank Section -->
+                  <div class="payment-category">
+                    <h4 class="payment-category-title">
+                      <i class="fas fa-university"></i> Transfer Bank
+                    </h4>
+                    <div class="payment-options">
+                      <!-- BCA -->
+                      <div class="payment-option">
+                        <input
+                          type="radio"
+                          id="payment-bca"
+                          name="paymentMethod"
+                          value="BCA Virtual Account"
+                        />
+                        <label for="payment-bca">
+                          <div class="payment-logo">
+                            <img
+                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/512px-Bank_Central_Asia.svg.png"
+                              alt="BCA"
+                            />
+                          </div>
+                          <span class="payment-name">BCA</span>
+                        </label>
+                      </div>
+
+                      <!-- Mandiri -->
+                      <div class="payment-option">
+                        <input
+                          type="radio"
+                          id="payment-mandiri"
+                          name="paymentMethod"
+                          value="Mandiri Virtual Account"
+                        />
+                        <label for="payment-mandiri">
+                          <div class="payment-logo">
+                            <img
+                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/512px-Bank_Mandiri_logo_2016.svg.png"
+                              alt="Mandiri"
+                            />
+                          </div>
+                          <span class="payment-name">Mandiri</span>
+                        </label>
+                      </div>
+
+                      <!-- BNI -->
+                      <div class="payment-option">
+                        <input
+                          type="radio"
+                          id="payment-bni"
+                          name="paymentMethod"
+                          value="BNI Virtual Account"
+                        />
+                        <label for="payment-bni">
+                          <div class="payment-logo">
+                            <img src="Aset gambar/OIP (10).jpg" alt="BNI" />
+                          </div>
+                          <span class="payment-name">BNI</span>
+                        </label>
+                      </div>
+
+                      <!-- BRI -->
+                      <div class="payment-option">
+                        <input
+                          type="radio"
+                          id="payment-bri"
+                          name="paymentMethod"
+                          value="BRI Virtual Account"
+                        />
+                        <label for="payment-bri">
+                          <div class="payment-logo">
+                            <img
+                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/BRI_2020.svg/512px-BRI_2020.svg.png"
+                              alt="BRI"
+                            />
+                          </div>
+                          <span class="payment-name">BRI</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Cash Section -->
+                  <div class="payment-category">
+                    <h4 class="payment-category-title">
+                      <i class="fas fa-money-bill-wave"></i> Tunai
+                    </h4>
+                    <div class="payment-options">
+                      <div class="payment-option payment-option-wide">
+                        <input
+                          type="radio"
+                          id="payment-cash"
+                          name="paymentMethod"
+                          value="Tunai (Cash)"
+                        />
+                        <label for="payment-cash">
+                          <div class="payment-logo">
+                            <i
+                              class="fas fa-money-bill-wave payment-icon-cash"
+                            ></i>
+                          </div>
+                          <span class="payment-name">Bayar di Tempat</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="checkout-actions">
@@ -582,6 +834,92 @@
               </div>
             </form>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Gateway Modal -->
+    <div id="paymentModal" class="modal payment-modal-overlay">
+      <div class="modal-content payment-modal">
+        <button class="close payment-close" id="paymentClose">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div class="payment-header">
+          <h2>Pilih Metode Pembayaran</h2>
+          <p>Silakan pilih metode pembayaran yang tersedia</p>
+        </div>
+
+        <div class="payment-methods">
+          <!-- Transfer Bank -->
+          <div class="payment-method-card" data-method="bank-transfer">
+            <div class="payment-method-icon">
+              <i class="fas fa-university"></i>
+            </div>
+            <h3>Transfer Bank</h3>
+            <p>BCA, Mandiri, BNI</p>
+            <div class="payment-method-details" style="display: none">
+              <p class="payment-info">
+                Silakan transfer ke rekening kami. Konfirmasi akan dikirimkan
+                melalui WhatsApp.
+              </p>
+            </div>
+          </div>
+
+          <!-- QRIS -->
+          <div class="payment-method-card" data-method="qris">
+            <div class="payment-method-icon">
+              <i class="fas fa-qrcode"></i>
+            </div>
+            <h3>QRIS</h3>
+            <p>Scan & Bayar</p>
+            <div class="payment-method-details" style="display: none">
+              <p class="payment-info">
+                Scan QRIS kami dan lakukan pembayaran dengan mudah.
+              </p>
+            </div>
+          </div>
+
+          <!-- E-Wallet -->
+          <div class="payment-method-card" data-method="ewallet">
+            <div class="payment-method-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>E-Wallet</h3>
+            <p>DANA, GoPay</p>
+            <div class="payment-method-details" style="display: none">
+              <p class="payment-info">
+                Bayar melalui aplikasi e-wallet favorit Anda.
+              </p>
+            </div>
+          </div>
+
+          <!-- Cash / Bayar di Tempat -->
+          <div class="payment-method-card" data-method="cash">
+            <div class="payment-method-icon">
+              <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <h3>Bayar di Tempat</h3>
+            <p>Tunai / Cash</p>
+            <div class="payment-method-details" style="display: none">
+              <p class="payment-info">
+                Bayar langsung saat layanan selesai di lokasi kami.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="payment-actions">
+          <button class="btn-outline payment-cancel" id="paymentCancel">
+            Batal
+          </button>
+          <button
+            class="btn-primary payment-confirm"
+            id="paymentConfirm"
+            disabled
+          >
+            <i class="fas fa-check"></i> Lanjutkan
+          </button>
         </div>
       </div>
     </div>

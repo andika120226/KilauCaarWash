@@ -1,12 +1,95 @@
-// Mobile Menu Toggle
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
+// ========================================
+// MOBILE NAVIGATION TOGGLE
+// ========================================
 
-hamburger.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
+const hamburger = document.querySelector(".hamburger");
+const mobileNav = document.querySelector(".mobile-nav");
+const mobileNavOverlay = document.querySelector(".mobile-nav-overlay");
+const mobileNavClose = document.querySelector(".mobile-nav-close");
+const body = document.body;
+
+// Function to open mobile navigation
+function openMobileNav() {
+  mobileNav.classList.add("active");
+  mobileNavOverlay.classList.add("active");
+  hamburger.classList.add("active");
+  body.classList.add("mobile-nav-open");
+}
+
+// Function to close mobile navigation
+function closeMobileNav() {
+  mobileNav.classList.remove("active");
+  mobileNavOverlay.classList.remove("active");
+  hamburger.classList.remove("active");
+  body.classList.remove("mobile-nav-open");
+}
+
+// Toggle mobile nav when hamburger is clicked
+if (hamburger) {
+  hamburger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (mobileNav.classList.contains("active")) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
+  });
+}
+
+// Close mobile nav when close button is clicked
+if (mobileNavClose) {
+  mobileNavClose.addEventListener("click", () => {
+    closeMobileNav();
+  });
+}
+
+// Close mobile nav when overlay is clicked
+if (mobileNavOverlay) {
+  mobileNavOverlay.addEventListener("click", () => {
+    closeMobileNav();
+  });
+}
+
+// Close mobile nav when a nav link is clicked
+document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    closeMobileNav();
+  });
 });
 
-// Smooth Scrolling for Navigation Links
+// Close mobile nav on window resize if it's open and screen becomes desktop size
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768 && mobileNav.classList.contains("active")) {
+    closeMobileNav();
+  }
+});
+
+// Prevent body scroll when mobile nav is open (additional touch prevention)
+if (mobileNav) {
+  mobileNav.addEventListener("touchmove", (e) => {
+    e.stopPropagation();
+  });
+}
+
+// ========================================
+// LEGACY SUPPORT (Old nav-menu if exists)
+// ========================================
+
+const navMenu = document.querySelector(".nav-menu");
+
+// Close old nav-menu when clicking on nav links (backward compatibility)
+if (navMenu) {
+  document.querySelectorAll(".nav-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+      if (hamburger) hamburger.classList.remove("active");
+    });
+  });
+}
+
+// ========================================
+// SMOOTH SCROLLING FOR NAVIGATION LINKS
+// ========================================
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -19,7 +102,13 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       });
 
       // Close mobile menu if open
-      navMenu.classList.remove("active");
+      if (mobileNav && mobileNav.classList.contains("active")) {
+        closeMobileNav();
+      }
+      if (navMenu) {
+        navMenu.classList.remove("active");
+        if (hamburger) hamburger.classList.remove("active");
+      }
     }
   });
 });
@@ -113,15 +202,86 @@ if (contactForm) {
     e.preventDefault();
 
     // Get form data
-    const formData = new FormData(contactForm);
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const date = document.getElementById("date").value || "Belum ditentukan";
+    const time = document.getElementById("time").value || "Belum ditentukan";
+    const message = document.getElementById("message").value;
 
-    // Show success message (in real app, send to backend)
+    // Get service label from select (with price)
+    const serviceSelect = document.getElementById("service");
+    let serviceLabel = "Tidak dipilih";
+    if (serviceSelect && serviceSelect.selectedIndex > 0) {
+      serviceLabel = serviceSelect.options[serviceSelect.selectedIndex].text;
+    }
+
+    // Build WhatsApp message with better formatting
+    let waMessage = `Halo Kilau Carwash, saya ingin mengirimkan pesan:%0A%0A`;
+    waMessage += `📝 Data Kontak:%0A`;
+    waMessage += `Nama: ${name}%0A`;
+    waMessage += `Email: ${email}%0A`;
+    waMessage += `Telepon: ${phone}%0A%0A`;
+    waMessage += `🚗 Jenis Layanan: ${serviceLabel}%0A`;
+    waMessage += `📅 Tanggal Booking: ${date}%0A`;
+    waMessage += `⏰ Waktu: ${time}%0A%0A`;
+    waMessage += `💬 Pesan:%0A${message}`;
+
+    // Redirect ke WhatsApp
+    window.open(`https://wa.me/6282175424507?text=${waMessage}`, "_blank");
+
+    // Show success message
     alert(
-      "Terima kasih! Pesan Anda telah terkirim. Tim kami akan menghubungi Anda segera."
+      "Pesan Anda akan dikirim ke WhatsApp. Silakan konfirmasi di WhatsApp."
     );
 
     // Reset form
     contactForm.reset();
+  });
+}
+
+// Booking WhatsApp Button Handler
+const bookingWhatsappBtn = document.getElementById("bookingWhatsappBtn");
+
+if (bookingWhatsappBtn) {
+  bookingWhatsappBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Get form data
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const date = document.getElementById("date").value || "Belum ditentukan";
+    const time = document.getElementById("time").value || "Belum ditentukan";
+    const message = document.getElementById("message").value;
+
+    // Get service label from select (with price)
+    const serviceSelect = document.getElementById("service");
+    let serviceLabel = "Tidak dipilih";
+    if (serviceSelect && serviceSelect.selectedIndex > 0) {
+      serviceLabel = serviceSelect.options[serviceSelect.selectedIndex].text;
+    }
+
+    // Validate form
+    if (!name || !phone) {
+      alert("Silakan isi Nama dan Nomor Telepon terlebih dahulu!");
+      return;
+    }
+
+    // Build WhatsApp message
+    let waMessage = `Halo Admin Kilau Carwash, Saya ingin melakukan pemesanan/bertanya.%0A%0A`;
+    waMessage += `📝 Data Kontak:%0A`;
+    waMessage += `Nama: ${name}%0A`;
+    if (email) waMessage += `Email: ${email}%0A`;
+    waMessage += `Nomor HP: ${phone}%0A%0A`;
+    waMessage += `🚗 Jenis Layanan: ${serviceLabel}%0A`;
+    waMessage += `📅 Tanggal Booking: ${date}%0A`;
+    waMessage += `⏰ Waktu: ${time}%0A%0A`;
+    waMessage += `💬 Pesan:%0A${message}%0A%0A`;
+    waMessage += `Terima kasih! 🚗✨`;
+
+    // Redirect ke WhatsApp
+    window.open(`https://wa.me/6282175424507?text=${waMessage}`, "_blank");
   });
 }
 
@@ -256,7 +416,7 @@ const orderPanel = document.getElementById("order-panel");
 const orderClose = document.getElementById("order-close");
 const orderWhatsapp = document.getElementById("order-whatsapp");
 
-const WHATSAPP_NUMBER = "6281234567890"; // change if needed (no +, country code included)
+const WHATSAPP_NUMBER = "6282175424507"; // change if needed (no +, country code included)
 
 const calcTotal = () => {
   return selectedPackages.reduce((sum, p) => sum + p.price * (p.qty || 1), 0);
@@ -1645,9 +1805,14 @@ const initShoppingCart = () => {
       const plate = document.getElementById("checkoutPlate").value;
       const address = document.getElementById("checkoutAddress").value;
       const notes = document.getElementById("checkoutNotes").value;
-      const paymentMethod = document.getElementById(
-        "checkoutPaymentMethod"
-      ).value;
+
+      // Get selected payment method from radio buttons
+      const paymentMethodRadio = document.querySelector(
+        'input[name="paymentMethod"]:checked'
+      );
+      const paymentMethod = paymentMethodRadio
+        ? paymentMethodRadio.value
+        : "Tunai (Cash)";
 
       let formattedDate = "-";
       if (dateTime) {
@@ -1731,9 +1896,14 @@ const initShoppingCart = () => {
       const plate = document.getElementById("checkoutPlate").value;
       const address = document.getElementById("checkoutAddress").value;
       const notes = document.getElementById("checkoutNotes").value;
-      const paymentMethod = document.getElementById(
-        "checkoutPaymentMethod"
-      ).value;
+
+      // Get selected payment method from radio buttons
+      const paymentMethodRadio = document.querySelector(
+        'input[name="paymentMethod"]:checked'
+      );
+      const paymentMethod = paymentMethodRadio
+        ? paymentMethodRadio.value
+        : "Tunai (Cash)";
 
       // Format date
       let formattedDate = "-";
@@ -1753,31 +1923,40 @@ const initShoppingCart = () => {
         }
       }
 
-      // Build WhatsApp message
-      let message = `*PEMESANAN KILAU CARWASH*%0A%0A`;
-      message += `*Informasi Pelanggan:*%0A`;
-      message += `▸ Nama: ${name}%0A`;
-      message += `▸ No. WhatsApp: ${phone}%0A`;
-      message += `▸ Tanggal & Waktu: ${formattedDate}%0A`;
-      if (plate) message += `▸ No. Polisi: ${plate}%0A`;
-      if (address) message += `▸ Alamat: ${address}%0A`;
-      message += `▸ Metode Pembayaran: ${paymentMethod}%0A`;
-      message += `%0A*DETAIL PESANAN:*%0A`;
+      // Build WhatsApp message with better formatting
+      let message = `Halo Admin Kilau Carwash, Saya ingin melakukan pemesanan/bertanya.%0A%0A`;
+      message += `📝 Data Kontak:%0A`;
+      message += `Nama: ${name}%0A`;
+      message += `Nomor HP: ${phone}%0A`;
+      message += `Tanggal Booking: ${formattedDate}%0A`;
+      message += `Waktu: ${
+        dateTime
+          ? new Date(dateTime).toLocaleTimeString("id-ID", {
+              hour: "2-digit",
+              minute: "2-digit",
+            })
+          : "-"
+      }%0A`;
+      if (plate) message += `Nomor Polisi: ${plate}%0A`;
+      if (address) message += `Alamat: ${address}%0A%0A`;
+      else message += `%0A`;
 
+      message += `🚗 Detail Layanan:%0A`;
       shoppingCart.forEach((item) => {
-        message += `▸ ${item.name} x${item.qty} - Rp ${formatCartPrice(
+        message += `${item.name} x${item.qty} - Rp ${formatCartPrice(
           item.price * item.qty
         )}%0A`;
       });
 
       const total = getCartTotal();
-      message += `%0A*TOTAL: Rp ${formatCartPrice(total)}*%0A`;
+      message += `%0A💰 Total: Rp ${formatCartPrice(total)}%0A`;
+      message += `💳 Metode Pembayaran: ${paymentMethod}%0A`;
 
       if (notes) {
-        message += `%0A*Catatan:* ${notes}%0A`;
+        message += `%0A💬 Pesan:%0A${notes}%0A`;
       }
 
-      message += `%0ATerima kasih telah memilih Kilau Carwash! 🚗✨`;
+      message += `%0ATerima kasih! 🚗✨`;
 
       // Prepare customer info for bill
       const customerInfo = {
@@ -1837,3 +2016,186 @@ if (document.readyState === "loading") {
 }
 
 console.log("✅ Shopping Cart functionality loaded!");
+// ============================================
+// PAYMENT GATEWAY MODAL FUNCTIONALITY
+// ============================================
+
+let selectedPaymentMethod = null;
+
+const paymentModal = document.getElementById("paymentModal");
+const paymentClose = document.getElementById("paymentClose");
+const paymentCancel = document.getElementById("paymentCancel");
+const paymentConfirm = document.getElementById("paymentConfirm");
+const paymentMethodCards = document.querySelectorAll(".payment-method-card");
+
+// Open Payment Modal
+function openPaymentModal() {
+  if (paymentModal) {
+    paymentModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+    selectedPaymentMethod = null;
+    paymentConfirm.disabled = true;
+
+    // Reset all selections
+    paymentMethodCards.forEach((card) => {
+      card.classList.remove("active");
+      const checkmark = card.querySelector(".checkmark");
+      if (!checkmark) {
+        const newCheckmark = document.createElement("span");
+        newCheckmark.className = "checkmark";
+        newCheckmark.innerHTML = '<i class="fas fa-check"></i>';
+        card.appendChild(newCheckmark);
+      }
+    });
+  }
+}
+
+// Close Payment Modal
+function closePaymentModal() {
+  if (paymentModal) {
+    paymentModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+}
+
+// Handle Payment Method Selection
+paymentMethodCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    // Remove active class from all cards
+    paymentMethodCards.forEach((c) => c.classList.remove("active"));
+
+    // Add active class to clicked card
+    card.classList.add("active");
+
+    // Store selected method
+    selectedPaymentMethod = card.getAttribute("data-method");
+
+    // Enable confirm button
+    paymentConfirm.disabled = false;
+  });
+});
+
+// Close modal buttons
+if (paymentClose) {
+  paymentClose.addEventListener("click", closePaymentModal);
+}
+
+if (paymentCancel) {
+  paymentCancel.addEventListener("click", closePaymentModal);
+}
+
+// Confirm Payment Selection
+if (paymentConfirm) {
+  paymentConfirm.addEventListener("click", () => {
+    if (selectedPaymentMethod) {
+      // Log selection
+      console.log("Selected Payment Method:", selectedPaymentMethod);
+
+      // Close payment modal
+      closePaymentModal();
+
+      // Open bill/invoice modal (integrate with existing invoice system)
+      const billModal = document.getElementById("billModal");
+      if (billModal) {
+        billModal.style.display = "block";
+      }
+
+      // Show success message
+      showPaymentConfirmation(selectedPaymentMethod);
+    }
+  });
+}
+
+// Show Payment Confirmation
+function showPaymentConfirmation(method) {
+  const methodNames = {
+    "bank-transfer": "Transfer Bank",
+    qris: "QRIS",
+    ewallet: "E-Wallet",
+    cash: "Bayar di Tempat",
+  };
+
+  const methodName = methodNames[method] || method;
+  console.log(
+    `✅ Metode pembayaran dipilih: ${methodName}. Lanjut ke invoice.`
+  );
+}
+
+// Close modal when clicking outside
+if (paymentModal) {
+  paymentModal.addEventListener("click", (e) => {
+    if (e.target === paymentModal) {
+      closePaymentModal();
+    }
+  });
+}
+
+// Keyboard shortcut to close modal
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && paymentModal?.classList.contains("active")) {
+    closePaymentModal();
+  }
+});
+
+// Integrate with existing "Checkout" button
+document.addEventListener("DOMContentLoaded", () => {
+  // Find all checkout buttons in the page
+  const checkoutButtons = document.querySelectorAll(
+    "[id='checkoutBtn'], .btn-checkout"
+  );
+
+  checkoutButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Check if there are items in cart
+      if (selectedPackages && selectedPackages.length > 0) {
+        openPaymentModal();
+      } else {
+        alert("Silakan pilih paket layanan terlebih dahulu");
+      }
+    });
+  });
+});
+
+console.log("✅ Payment Gateway Modal functionality loaded!");
+
+// ============================================
+// CHECKOUT PAYMENT METHOD ENHANCEMENT
+// ============================================
+
+// Add visual feedback for payment method selection
+document.addEventListener("DOMContentLoaded", () => {
+  const paymentRadios = document.querySelectorAll(
+    'input[name="paymentMethod"]'
+  );
+
+  if (paymentRadios.length > 0) {
+    paymentRadios.forEach((radio) => {
+      radio.addEventListener("change", function () {
+        // Log selection
+        console.log("Payment method selected:", this.value);
+
+        // Optional: Add animation/feedback
+        const label = this.nextElementSibling;
+        if (label) {
+          label.style.animation = "none";
+          setTimeout(() => {
+            label.style.animation = "pulse 0.4s ease";
+          }, 10);
+        }
+      });
+    });
+
+    console.log("✅ Payment method selection handler loaded!");
+  }
+});
+
+// Pulse animation for selected payment
+const style = document.createElement("style");
+style.textContent = `
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+`;
+document.head.appendChild(style);

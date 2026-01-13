@@ -41,16 +41,66 @@
         </div>
       </div>
     </nav>
-
-    <!-- Contact Hero -->
-    <section class="contact-hero">
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay"></div>
+    <div class="mobile-nav">
+      <div class="mobile-nav-header">
+        <div class="mobile-nav-logo">
+          <i class="fas fa-car-side"></i>
+          <span>Kilau Carwash</span>
+        </div>
+        <button class="mobile-nav-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav-menu">
+        <a href="home.html" class="mobile-nav-link">
+          <i class="fas fa-home"></i>
+          <span>Beranda</span>
+        </a>
+        <a href="layanan.html" class="mobile-nav-link">
+          <i class="fas fa-list"></i>
+          <span>Layanan</span>
+        </a>
+        <a href="kontak.html" class="mobile-nav-link active">
+          <i class="fas fa-envelope"></i>
+          <span>Kontak</span>
+        </a>
+        <a href="home.html#testimoni" class="mobile-nav-link">
+          <i class="fas fa-star"></i>
+          <span>Testimoni</span>
+        </a>
+      </nav>
+      <div class="mobile-nav-footer">
+        <a href="kontak.html" class="btn-primary btn-block">
+          <i class="fas fa-phone"></i> Pesan Sekarang
+        </a>
+        <div class="mobile-nav-info">
+          <p><i class="fas fa-map-marker-alt"></i> Bandar Lampung</p>
+          <p><i class="fas fa-clock"></i> Senin - Minggu, 08:00 - 18:00</p>
+        </div>
+      </div>
+    </div>
+    <!-- Page Header -->
+    <section
+      class="page-header"
+      style="
+        background: linear-gradient(
+          135deg,
+          rgba(11, 36, 71, 0.95) 0%,
+          rgba(0, 212, 191, 0.85) 100%
+        );
+      "
+    >
       <div class="container">
-        <div class="contact-hero-content">
-          <span class="badge">Hubungi Kami</span>
+        <div class="page-header-content">
           <h1>Mari Berkomunikasi</h1>
-          <p class="lead">
-            Kami siap membantu Anda dengan segala kebutuhan perawatan kendaraan
-          </p>
+          <p>Hubungi Kami untuk Kebutuhan Perawatan Kendaraan Anda</p>
+          <div class="breadcrumb">
+            <a href="home.html"><i class="fas fa-home"></i> Beranda</a>
+            <span>/</span>
+            <span>Kontak</span>
+          </div>
         </div>
       </div>
     </section>
@@ -216,7 +266,7 @@
                   <h4>WhatsApp</h4>
                   <p>Chat dengan kami untuk<br />booking cepat & mudah</p>
                   <a
-                    href="https://wa.me/622175424507?text=Halo%20Kilau%20Carwash,%20saya%20ingin%20bertanya"
+                    href="https://wa.me/6282175424507?text=Halo%20Kilau%20Carwash,%20saya%20ingin%20bertanya"
                     class="contact-link"
                     target="_blank"
                     >Chat WhatsApp</a
@@ -337,6 +387,15 @@
                         Deep Clean Interior - Rp 25.000
                       </option>
                       <option value="waxing">Waxing & Poles - Rp 75.000</option>
+                      <option value="steam-clean">
+                        Steam Clean Engine - Rp 35.000
+                      </option>
+                      <option value="nano-coating">
+                        Nano Coating - Rp 150.000
+                      </option>
+                      <option value="carpet-wash">
+                        Karpet Mobil Cuci - Rp 20.000
+                      </option>
                       <option value="lainnya">Lainnya</option>
                     </select>
                   </div>
@@ -391,13 +450,13 @@
                   <span>atau</span>
                 </div>
 
-                <a
-                  href="https://wa.me/6281234567890?text=Halo%20Kilau%20Carwash,%20saya%20ingin%20booking%20layanan"
+                <button
+                  type="button"
+                  id="bookingWhatsappBtn"
                   class="btn-whatsapp btn-lg btn-block"
-                  target="_blank"
                 >
                   <i class="fab fa-whatsapp"></i> Booking via WhatsApp
-                </a>
+                </button>
               </form>
 
               <div id="form-message" class="form-message hidden"></div>
