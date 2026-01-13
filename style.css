@@ -1195,6 +1195,62 @@ body.mobile-nav-open {
   .light-section .container {
     padding: 0 16px;
   }
+
+  /* Modal responsive fixes for mobile */
+  .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .modal-content,
+  .checkout-modal,
+  .bill-modal,
+  .payment-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 90vh;
+    margin: 0;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .checkout-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .payment-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Form responsive */
+  .form-group {
+    width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Contact form mobile */
+  .contact-form {
+    width: 100%;
+  }
+
+  /* Prevent overflow when mobile nav is open */
+  body.mobile-nav-open {
+    overflow: hidden;
+    width: 100vw;
+    position: fixed;
+  }
+
+  body.mobile-nav-open {
+    overflow-y: hidden;
+  }
 }
 
 /* Testimonials Section */
