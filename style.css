@@ -1684,12 +1684,16 @@ body.mobile-nav-open {
 
   .logo {
     font-size: 20px;
-    gap: 10px;
-    min-width: 40px;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
   }
 
   .logo span {
-    display: none;
+    display: inline-block;
+    font-size: 14px;
+    white-space: nowrap;
+    line-height: 1.2;
   }
 
   .hero {
@@ -6426,5 +6430,4 @@ body.mobile-nav-open {
   .payment-cancel {
     flex: 1;
   }
-  
 }
