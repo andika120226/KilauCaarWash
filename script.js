@@ -92,6 +92,10 @@ if (navMenu) {
 // ========================================
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
+    const isGalleryLightboxLink =
+      anchor.closest(".gallery-item") || anchor.closest(".lightbox");
+    if (isGalleryLightboxLink) return;
+
     e.preventDefault();
     const target = document.querySelector(this.getAttribute("href"));
 
@@ -571,7 +575,7 @@ console.log("%cWebsite: www.kilaucarwash.com", "color: #999; font-size: 12px;");
           ">": "&gt;",
           '"': "&quot;",
           "'": "&#39;",
-        }[c])
+        })[c]
     );
   };
 
@@ -1059,23 +1063,48 @@ const initScrollToTop = () => {
 // Image gallery lightbox enhancement
 const initGalleryLightbox = () => {
   const galleryItems = document.querySelectorAll(".gallery-item");
+  const hideLightbox = (lightbox) => {
+    lightbox.style.opacity = "0";
+    setTimeout(() => {
+      lightbox.style.display = "none";
+    }, 250);
+  };
 
   galleryItems.forEach((item) => {
     const link = item.querySelector("a");
     if (link) {
       link.addEventListener("click", (e) => {
+        e.preventDefault();
         // Add smooth transition
         const targetId = link.getAttribute("href");
         const lightbox = document.querySelector(targetId);
 
         if (lightbox) {
           lightbox.style.display = "flex";
-          setTimeout(() => {
+          requestAnimationFrame(() => {
             lightbox.style.opacity = "1";
-          }, 10);
+          });
         }
       });
     }
+  });
+
+  // Close on button or overlay click
+  const lightboxes = document.querySelectorAll(".lightbox");
+  lightboxes.forEach((lb) => {
+    const closeBtn = lb.querySelector(".close");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        hideLightbox(lb);
+      });
+    }
+
+    lb.addEventListener("click", (e) => {
+      if (e.target === lb) {
+        hideLightbox(lb);
+      }
+    });
   });
 
   // Close lightbox with ESC key
@@ -1083,10 +1112,7 @@ const initGalleryLightbox = () => {
     if (e.key === "Escape") {
       const lightboxes = document.querySelectorAll(".lightbox");
       lightboxes.forEach((lb) => {
-        lb.style.opacity = "0";
-        setTimeout(() => {
-          lb.style.display = "none";
-        }, 300);
+        hideLightbox(lb);
       });
     }
   });
